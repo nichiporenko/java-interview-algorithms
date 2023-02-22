@@ -1,13 +1,7 @@
 package com.nichiporenko.algorithms.arrays.easy;
 
-import org.assertj.core.util.Lists;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
