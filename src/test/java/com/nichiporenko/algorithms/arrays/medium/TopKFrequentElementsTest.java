@@ -1,6 +1,5 @@
 package com.nichiporenko.algorithms.arrays.medium;
 
-import com.nichiporenko.algorithms.arrays.easy.TwoSum;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
@@ -8,7 +7,6 @@ import java.util.stream.IntStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TopKFrequentElementsTest {
 
