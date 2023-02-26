@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.nichiporenko.algorithms'
+version '0.1'
 
 repositories {
     mavenCentral()
@@ -18,4 +19,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
