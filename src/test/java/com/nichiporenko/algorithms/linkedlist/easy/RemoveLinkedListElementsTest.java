@@ -31,7 +31,6 @@ class RemoveLinkedListElementsTest {
         StringBuilder result = new StringBuilder();
 
         while (current != null) {
-
             result.append(current.val);
             current = current.next;
         }
