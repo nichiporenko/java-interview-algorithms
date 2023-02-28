@@ -42,6 +42,17 @@ public class ReverseLinkedList {
         return previous;
     }
 
+    public static ListNode reverseListRecursively(ListNode head) {
+        return reverse(null, head);
+    }
+
+    private static ListNode reverse(ListNode previous, ListNode current) {
+        if (current == null) return previous;
+        ListNode next = current.next;
+        current.next = previous;
+        return reverse(current, next);
+    }
+
     public static class ListNode {
         int val;
         ListNode next;
