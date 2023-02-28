@@ -10,6 +10,8 @@
 
 [Binary Search](https://github.com/nichiporenko/java-interview-algorithms/tree/main/src/main/java/com/nichiporenko/algorithms/binarysearch)
 
+[Linked List](https://github.com/nichiporenko/java-interview-algorithms/tree/main/src/main/java/com/nichiporenko/algorithms/linkedlist)
+
 [Sliding Window](https://github.com/nichiporenko/java-interview-algorithms/tree/main/src/main/java/com/nichiporenko/algorithms/slidingwindow)
 
 [Stack](https://github.com/nichiporenko/java-interview-algorithms/tree/main/src/main/java/com/nichiporenko/algorithms/stack)
