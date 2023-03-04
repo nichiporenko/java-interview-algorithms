@@ -12,7 +12,7 @@ class IndexOfFirstOccurrenceInStringTest {
     }
 
     @Test
-    void findNotExisting() {
+    void findNonexistent() {
         assertThat(IndexOfFirstOccurrenceInString.find("leetcode", "leeto")).isEqualTo(-1);
     }
 
