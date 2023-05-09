@@ -21,7 +21,7 @@ class MatrixDiagonalSumTest {
     };
 
     @Test
-    void floodFill() {
+    void diagonalSum() {
         assertThat(MatrixDiagonalSum.diagonalSum(input1)).isEqualTo(25);
         assertThat(MatrixDiagonalSum.diagonalSum(input2)).isEqualTo(8);
         assertThat(MatrixDiagonalSum.diagonalSum(input3)).isEqualTo(5);
