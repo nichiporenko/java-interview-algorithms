@@ -69,3 +69,16 @@ jobs:
       with:
         name: jacoco-report
         path: target/site/jacoco/
+  deploy:
+    needs: [ build ]
+    uses: ./github/workflows/test.yml
+    with:
+      environment: production
+  get-result:
+    name: 'Get result'
+    needs: [ deploy ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Get result'
+        if: failure()
+        run: echo 'TRIGGERED'
