@@ -83,9 +83,9 @@ jobs:
       - name: 'Get result'
         id: get-result
         run: |
-          echo 'needs.deploy.result=${{ needs.deploy.result }}'
-          echo 'needs.deploy.outputs.TRIGGERED=${{ needs.deploy.outputs.TRIGGERED }}'
-          echo 'needs.deploy.outputs.TRIGGERED_true=${{ needs.deploy.outputs.TRIGGERED == 'true' }}'
+          echo needs.deploy.result=${{ needs.deploy.result }}
+          echo needs.deploy.outputs.TRIGGERED=${{ needs.deploy.outputs.triggered }}
+          echo needs.deploy.outputs.TRIGGERED_true=${{ needs.deploy.outputs.triggered == 'true' }}
           echo 'TRIGGERED=${{ needs.deploy.outputs.TRIGGERED }}'
           echo 'RESULT=${{ needs.deploy.result }}'
           echo 'CONCLUSION=${{ needs.deploy.conclusion }}'
