@@ -4,12 +4,13 @@ on:
   workflow_call:
     inputs:
       environment:
-        required: false
+        required: true
         type: string
 jobs:
   test-job:
     name: 'Test job'
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - name: Test step
         run: echo 'Test step executed'
