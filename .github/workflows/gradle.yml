@@ -84,4 +84,4 @@ jobs:
         id: gg
         run: |
           echo 'TRIGGERED'
-          echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'
+          echo 'CONCLUSION=${{ needs.deploy.result }}'
