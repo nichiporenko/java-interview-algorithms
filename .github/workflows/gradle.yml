@@ -77,8 +77,11 @@ jobs:
   get-result:
     name: 'Get result'
     needs: [ deploy ]
-    if: ${{ failure() }}
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Get result'
-        run: echo 'TRIGGERED'
+        id: gg
+        run: |
+          echo 'TRIGGERED'
+          echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'

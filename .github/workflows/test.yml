@@ -13,4 +13,7 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - name: Test step
-        run: echo 'Test step executed'
+        run: |
+          echo 'Test step executed'
+          echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'
+#          echo "OUTPUT=${{ steps. }}" >> $GITHUB_OUTPUT
