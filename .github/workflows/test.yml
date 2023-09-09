@@ -15,6 +15,6 @@ jobs:
       - name: Test step
         run: |
           echo 'Test step executed'
-          echo 'TRIGGERED=true' >> $GITHUB_OUTPUT
+          echo "TRIGGERED=true" >> $GITHUB_OUTPUT
           echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'
 #          echo "OUTPUT=${{ steps. }}" >> $GITHUB_OUTPUT
