@@ -81,8 +81,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Get result'
-        id: gg
+        id: get-result
         run: |
-          echo 'TRIGGERED'
-          echo 'CONCLUSION=${{ needs.deploy.result }}'
+          echo 'TRIGGERED ${{ always() && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.TRIGGERED == 'true')) }}'
+          echo 'TRIGGERED=${{ needs.deploy.outputs.TRIGGERED }}'
+          echo 'RESULT=${{ needs.deploy.result }}'
+          echo 'CONCLUSION=${{ needs.deploy.conclusion }}'
           echo 'OUTPUTS=${{ toJson(needs.deploy.outputs) }}'
