@@ -71,7 +71,7 @@ jobs:
         path: target/site/jacoco/
   deploy:
     needs: [ build ]
-    uses: ./github/workflows/test.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   get-result:
