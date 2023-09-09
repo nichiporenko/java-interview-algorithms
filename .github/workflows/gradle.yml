@@ -85,3 +85,4 @@ jobs:
         run: |
           echo 'TRIGGERED'
           echo 'CONCLUSION=${{ needs.deploy.result }}'
+          echo 'OUTPUTS=${{ needs.deploy.outputs }}'
