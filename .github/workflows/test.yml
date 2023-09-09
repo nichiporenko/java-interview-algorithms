@@ -6,6 +6,10 @@ on:
       environment:
         required: true
         type: string
+    outputs:
+      triggered:
+        description: "Was the job triggered"
+        value: ${{ jobs.test-job.outputs.triggered }}
 jobs:
   test-job:
     name: 'Test job'
