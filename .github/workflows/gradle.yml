@@ -77,8 +77,8 @@ jobs:
   get-result:
     name: 'Get result'
     needs: [ deploy ]
+    if: ${{ failure() }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Get result'
-        if: failure()
         run: echo 'TRIGGERED'
