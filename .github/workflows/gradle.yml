@@ -83,7 +83,7 @@ jobs:
       - name: 'Get result'
         id: get-result
         run: |
-          echo 'TRIGGERED ${{ always() && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.TRIGGERED == 'true')) }}'
+          echo 'TRIGGERED ${{ failure() && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.TRIGGERED == 'true')) }}'
           echo 'TRIGGERED=${{ needs.deploy.outputs.TRIGGERED }}'
           echo 'RESULT=${{ needs.deploy.result }}'
           echo 'CONCLUSION=${{ needs.deploy.conclusion }}'
