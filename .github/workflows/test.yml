@@ -9,14 +9,14 @@ on:
     outputs:
       triggered:
         description: "Was the job triggered"
-        value: ${{ jobs.set-outputs.outputs.triggered }}
+        value: ${{ jobs.test-job.outputs.triggered }}
 jobs:
   test-job:
     name: 'Test job'
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     outputs:
-      triggered: ${{ steps.test-step.outputs.triggered }}
+      triggered: ${{ steps.set-outputs.outputs.triggered }}
     steps:
       - name: Set GitHub outputs
         id: set-outputs
