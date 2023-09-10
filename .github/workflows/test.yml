@@ -18,9 +18,7 @@ jobs:
     outputs:
       triggered: ${{ steps.test-step.outputs.triggered }}
     steps:
-      - name: Test step
-        id: test-step
-        run: |
+      - run: |
           echo 'Test step executed'
           echo "triggered=true" >> $GITHUB_OUTPUT
           echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'
