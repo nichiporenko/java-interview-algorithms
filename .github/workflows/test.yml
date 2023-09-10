@@ -9,7 +9,7 @@ on:
     outputs:
       triggered:
         description: "Was the job triggered"
-        value: ${{ jobs.test-job.outputs.triggered }}
+        value: ${{ jobs.set-outputs.outputs.triggered }}
 jobs:
   test-job:
     name: 'Test job'
@@ -19,6 +19,7 @@ jobs:
       triggered: ${{ steps.test-step.outputs.triggered }}
     steps:
       - name: Set GitHub outputs
+        id: set-outputs
         run: |
           echo 'Test step executed'
           echo "triggered=true" >> $GITHUB_OUTPUT
