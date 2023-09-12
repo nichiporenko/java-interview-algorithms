@@ -76,7 +76,7 @@ jobs:
       environment: production
   deploy-2:
     needs: [ deploy ]
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/test-with-fail.yml
     with:
       environment: production
   get-result:
