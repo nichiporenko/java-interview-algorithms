@@ -74,10 +74,16 @@ jobs:
     uses: ./.github/workflows/test.yml
     with:
       environment: production
+  deploy-2:
+    needs: [ deploy ]
+    uses: ./.github/workflows/test.yml
+    with:
+      environment: production
   get-result:
     name: 'Get result'
-    needs: [ deploy ]
-    if: ${{ failure() 
+    needs: [ deploy-2 ]
+    if: ${{ failure()
+      && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
       && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true')) }}
     runs-on: ubuntu-latest
     steps:
