@@ -84,7 +84,7 @@ jobs:
     needs: [ deploy-2 ]
     if: ${{ failure()
       && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
-      && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true')) }}
+      && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true')) }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Get result'
