@@ -87,6 +87,11 @@ jobs:
       && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true')) }}
     runs-on: ubuntu-latest
     steps:
+      - name: Rest outputs
+        run: |
+          needs.deploy.outputs.triggered = ''
+          needs.deploy-2.outputs.triggered = ''
+
       - name: 'Get result'
         id: get-result
         run: |
