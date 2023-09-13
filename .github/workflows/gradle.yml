@@ -81,7 +81,7 @@ jobs:
       environment: production
   get-result:
     name: 'Get result'
-    needs: [ deploy-2 ]
+    needs: [ deploy, deploy-2 ]
     if: ${{ failure()
       && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
       && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true')) }}
