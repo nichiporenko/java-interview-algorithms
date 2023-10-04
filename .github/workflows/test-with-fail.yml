@@ -30,3 +30,8 @@ jobs:
         run: |
             echo 'Second step executed'
             exit 1
+
+      - name: 'Get result'
+        if: ${{ failure() }}
+        run: |
+          echo 'SEND NOTIFICATION'

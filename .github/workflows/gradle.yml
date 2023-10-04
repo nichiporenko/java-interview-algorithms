@@ -71,12 +71,12 @@ jobs:
         path: target/site/jacoco/
   deploy:
     needs: [ build ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-2:
     needs: [ deploy ]
-    uses: ./.github/workflows/test.yml
+    uses: ./.github/workflows/test-with-fail.yml
     with:
       environment: production
   get-result:
@@ -84,7 +84,7 @@ jobs:
     needs: [ deploy, deploy-2 ]
     if: ${{ failure()
       && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
-      && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true')) }}
+      && (needs.deploy-2.result != 'failure') }}
     runs-on: ubuntu-latest
     steps:
       - name: Rest outputs
@@ -95,6 +95,7 @@ jobs:
       - name: 'Get result'
         id: get-result
         run: |
+          echo 'SEND NOTIFICATION'
           echo needs.deploy.result=${{ needs.deploy.result }}
           echo needs.deploy-2.result=${{ needs.deploy-2.result }}
           echo needs.deploy.outputs.TRIGGERED=${{ needs.deploy.outputs.triggered }}
