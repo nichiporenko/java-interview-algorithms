@@ -11,7 +11,7 @@ on:
         description: "Was the job triggered"
         value: ${{ jobs.test-job.outputs.triggered }}
 jobs:
-  test-job:
+  deploy-2:
     name: 'Test job'
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
