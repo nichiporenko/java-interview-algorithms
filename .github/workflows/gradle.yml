@@ -79,11 +79,36 @@ jobs:
     uses: ./.github/workflows/test-with-fail.yml
     with:
       environment: production
+  deploy-3:
+    needs: [ deploy ]
+    uses: ./.github/workflows/test-with-fail.yml
+    with:
+      environment: production
+  deploy-4:
+    needs: [ deploy ]
+    uses: ./.github/workflows/test-with-fail.yml
+    with:
+      environment: production
+  deploy-5:
+    needs: [ deploy ]
+    uses: ./.github/workflows/test-with-fail.yml
+    with:
+      environment: production
+  deploy-6:
+    needs: [ deploy ]
+    uses: ./.github/workflows/test-with-fail.yml
+    with:
+      environment: production
   get-result:
     name: 'Get result'
     if: ${{ failure()
       && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
-      && (needs.deploy-2.result != 'failure') }}
+      && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true'))
+      && (needs.deploy-3.result != 'failure' || (needs.deploy-3.result == 'failure' && needs.deploy-3.outputs.triggered == 'true'))
+      && (needs.deploy-4.result != 'failure' || (needs.deploy-4.result == 'failure' && needs.deploy-4.outputs.triggered == 'true'))
+      && (needs.deploy-5.result != 'failure' || (needs.deploy-5.result == 'failure' && needs.deploy-5.outputs.triggered == 'true'))
+      && (needs.deploy-6.result != 'failure' || (needs.deploy-6.result == 'failure' && needs.deploy-6.outputs.triggered == 'true'))
+      }}
     needs: [ deploy, deploy-2 ]
     runs-on: ubuntu-latest
     steps:
