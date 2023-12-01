@@ -121,7 +121,7 @@ jobs:
       && (needs.deploy-7.result != 'failure' || (needs.deploy-7.result == 'failure' && needs.deploy-7.outputs.triggered == 'true'))
       && (needs.deploy-8.result != 'failure' || (needs.deploy-8.result == 'failure' && needs.deploy-8.outputs.triggered == 'true'))
       }}
-    needs: [ deploy, deploy-2 ]
+    needs: [ deploy, deploy-2, deploy-3, deploy-4, deploy-5, deploy-6, deploy-7, deploy-8 ]
     runs-on: ubuntu-latest
     steps:
       - name: Rest outputs
