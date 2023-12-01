@@ -76,37 +76,37 @@ jobs:
       environment: production
   deploy-2:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-3:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-4:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-5:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-6:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-7:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-8:
     needs: [ deploy ]
-    uses: ./.github/workflows/test-with-fail.yml
+    uses: ./.github/workflows/test.yml
     with:
       environment: production
   get-result:
