@@ -80,32 +80,32 @@ jobs:
     with:
       environment: production
   deploy-3:
-    needs: [ deploy ]
+    needs: [ deploy-2 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-4:
-    needs: [ deploy ]
+    needs: [ deploy-3 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-5:
-    needs: [ deploy ]
+    needs: [ deploy-4 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-6:
-    needs: [ deploy ]
+    needs: [ deploy-5 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-7:
-    needs: [ deploy ]
+    needs: [ deploy-6 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
   deploy-8:
-    needs: [ deploy ]
+    needs: [ deploy-7 ]
     uses: ./.github/workflows/test.yml
     with:
       environment: production
