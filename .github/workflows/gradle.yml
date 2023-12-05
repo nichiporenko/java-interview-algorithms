@@ -111,16 +111,16 @@ jobs:
       environment: production
   get-result:
     name: 'Get result'
-    if: ${{ failure() 
-      && needs.deploy.outputs.status_ok == 'false'
-      && needs.deploy-2.outputs.status_ok == 'false'
-      && needs.deploy-3.outputs.status_ok == 'false'
-      && needs.deploy-4.outputs.status_ok == 'false'
-      && needs.deploy-5.outputs.status_ok == 'false'
-      && needs.deploy-6.outputs.status_ok == 'false'
-      && needs.deploy-7.outputs.status_ok == 'false'
-      && needs.deploy-8.outputs.status_ok == 'false'
-      }}
+#    if: ${{ failure()
+#      || (needs.deploy.outputs.status_ok == 'false'
+#      || needs.deploy-2.outputs.status_ok == 'false'
+#      || needs.deploy-3.outputs.status_ok == 'false'
+#      || needs.deploy-4.outputs.status_ok == 'false'
+#      || needs.deploy-5.outputs.status_ok == 'false'
+#      || needs.deploy-6.outputs.status_ok == 'false'
+#      || needs.deploy-7.outputs.status_ok == 'false'
+#      || needs.deploy-8.outputs.status_ok == 'false')
+#      }}
     needs: [ deploy, deploy-2, deploy-3, deploy-4, deploy-5, deploy-6, deploy-7, deploy-8 ]
     runs-on: ubuntu-latest
     steps:
@@ -128,6 +128,7 @@ jobs:
         run: |
           needs.deploy.outputs.triggered = ''
           needs.deploy-2.outputs.triggered = ''
+          echo "needs.deploy.outputs.status_ok: ${{ needs.deploy.outputs.status_ok }}"
 
       - name: 'Get result'
         id: get-result
