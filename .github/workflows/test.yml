@@ -10,6 +10,9 @@ on:
       triggered:
         description: "Was the job triggered"
         value: ${{ jobs.test-job.outputs.triggered }}
+      status_ok:
+        description: "Status ok"
+        value: ${{ jobs.test-job.outputs.status_ok }}
 jobs:
   test-job:
     name: 'Test job'
@@ -17,6 +20,7 @@ jobs:
     environment: ${{ inputs.environment }}
     outputs:
       triggered: ${{ steps.set-outputs.outputs.triggered }}
+      status_ok: ${{ steps.set_status.outputs.status_ok }}
     steps:
       - name: Set GitHub outputs
         id: set-outputs
@@ -30,3 +34,6 @@ jobs:
         id: 'test-step'
         run: |
             echo 'Second step executed'
+      - name: Determine Status
+        id: set_status
+        run: echo "status_ok=${{ (success() || (failure() && steps.set-outputs.outputs.triggered == 'true')) }}" >> $GITHUB_ENV

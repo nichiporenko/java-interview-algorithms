@@ -111,15 +111,15 @@ jobs:
       environment: production
   get-result:
     name: 'Get result'
-    if: ${{ failure()
-      && (needs.deploy.result != 'failure' || (needs.deploy.result == 'failure' && needs.deploy.outputs.triggered == 'true'))
-      && (needs.deploy-2.result != 'failure' || (needs.deploy-2.result == 'failure' && needs.deploy-2.outputs.triggered == 'true'))
-      && (needs.deploy-3.result != 'failure' || (needs.deploy-3.result == 'failure' && needs.deploy-3.outputs.triggered == 'true'))
-      && (needs.deploy-4.result != 'failure' || (needs.deploy-4.result == 'failure' && needs.deploy-4.outputs.triggered == 'true'))
-      && (needs.deploy-5.result != 'failure' || (needs.deploy-5.result == 'failure' && needs.deploy-5.outputs.triggered == 'true'))
-      && (needs.deploy-6.result != 'failure' || (needs.deploy-6.result == 'failure' && needs.deploy-6.outputs.triggered == 'true'))
-      && (needs.deploy-7.result != 'failure' || (needs.deploy-7.result == 'failure' && needs.deploy-7.outputs.triggered == 'true'))
-      && (needs.deploy-8.result != 'failure' || (needs.deploy-8.result == 'failure' && needs.deploy-8.outputs.triggered == 'true'))
+    if: ${{ failure() 
+      && needs.deploy.outputs.status_ok == 'false'
+      && needs.deploy-2.outputs.status_ok == 'false'
+      && needs.deploy-3.outputs.status_ok == 'false'
+      && needs.deploy-4.outputs.status_ok == 'false'
+      && needs.deploy-5.outputs.status_ok == 'false'
+      && needs.deploy-6.outputs.status_ok == 'false'
+      && needs.deploy-7.outputs.status_ok == 'false'
+      && needs.deploy-8.outputs.status_ok == 'false'
       }}
     needs: [ deploy, deploy-2, deploy-3, deploy-4, deploy-5, deploy-6, deploy-7, deploy-8 ]
     runs-on: ubuntu-latest
