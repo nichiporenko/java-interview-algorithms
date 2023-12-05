@@ -127,8 +127,6 @@ jobs:
     steps:
       - name: Rest outputs
         run: |
-          needs.deploy.outputs.triggered = ''
-          needs.deploy-2.outputs.triggered = ''
           echo "needs.deploy.outputs.status_ok: ${{ needs.deploy.outputs.status_ok }}"
 
       - name: 'Get result'
