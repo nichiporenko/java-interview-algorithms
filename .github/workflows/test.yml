@@ -36,4 +36,5 @@ jobs:
             echo 'Second step executed'
       - name: Determine Status
         id: set_status
-        run: echo "status_ok=${{ (success() || (failure() && steps.set-outputs.outputs.triggered == 'true')) }}" >> $GITHUB_ENV
+        run: |
+          echo "${{ job.status }}"
