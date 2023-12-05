@@ -111,6 +111,7 @@ jobs:
       environment: production
   get-result:
     name: 'Get result'
+    if: ${{ failure() }}
 #    if: ${{ failure()
 #      || (needs.deploy.outputs.status_ok == 'false'
 #      || needs.deploy-2.outputs.status_ok == 'false'
