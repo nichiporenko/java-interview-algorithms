@@ -29,6 +29,8 @@ jobs:
           echo "triggered=true" >> $GITHUB_OUTPUT
           echo 'CONCLUSION=${{ env.WORKFLOW_CONCLUSION }}'
           echo "${{ github.event_name }}"
+          echo "${{ github.head_ref }}"
+          echo "${{ github.ref_name }}"
 #          exit 1
 #          echo "OUTPUT=${{ steps. }}" >> $GITHUB_OUTPUT
       - name: 'Test step 2'
