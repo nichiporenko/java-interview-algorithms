@@ -18,6 +18,8 @@ permissions:
 
 jobs:
   build:
+    env:
+      TF_WORKSPACE: test
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +33,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+
+    - name: Override
+      run: echo "TF_WORKSPACE=test2" >> $GITHUB_ENV
+
+    - name: Test
+      run: echo "${{ env.TF_WORKSPACE }}"
 
     - name: Run Tests
       run: ./gradlew test
