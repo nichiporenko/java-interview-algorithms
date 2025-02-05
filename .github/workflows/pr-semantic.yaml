@@ -1,0 +1,17 @@
+name: 'Semantic Release'
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  semantic-release:
+    uses: ./.github/workflows/reusable-semantic.yaml
+    with:
+      environment: dev
+      release-assets: |
+        gradle/wrapper/gradle-wrapper.properties
+        build.gradle
