@@ -12,3 +12,6 @@ jobs:
     uses: ./.github/workflows/reusable-semantic.yaml
     with:
       environment: dev
+      release-assets: |
+        gradle/wrapper/gradle-wrapper.properties
+        build.gradle

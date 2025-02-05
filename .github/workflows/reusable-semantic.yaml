@@ -10,6 +10,11 @@ on:
         required: false
         type: string
         default: ''
+      tag-prefix:
+        description: "Tag prefix for the release"
+        required: false
+        type: string
+        default: 'v'
 jobs:
   semantic-release:
     runs-on: ubuntu-22.04
@@ -30,6 +35,7 @@ jobs:
               'master',
               'main'
             ]
+          tag_format: ${{ inputs.tag-prefix }}${version}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -43,5 +49,5 @@ jobs:
         if: inputs.release-assets != '' && steps.semantic.outputs.new_release_published == 'true'
         uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
         with:
-          tag_name: v${{ steps.semantic.outputs.new_release_version }}
+          tag_name: ${{ inputs.tag-prefix }}${{ steps.semantic.outputs.new_release_version }}
           files: ${{ inputs.release-assets }}
