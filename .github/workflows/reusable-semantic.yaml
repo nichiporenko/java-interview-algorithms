@@ -30,7 +30,7 @@ jobs:
               'main'
             ]
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Semantic Release - Output
         shell: bash
