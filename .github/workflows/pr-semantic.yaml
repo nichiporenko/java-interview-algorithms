@@ -7,7 +7,7 @@ on:
 
 jobs:
   semantic-release:
-    uses: ./.github/workflows/reusable-semantic.yml
+    uses: ./.github/workflows/reusable-semantic.yaml
     with:
       environment: dev
       release-assets: |
