@@ -1,6 +1,10 @@
 name: "Test job"
 description: "Reusable action to perform a task"
 inputs:
+  no-checkout:
+    description: "Skip the checkout step"
+    required: false
+    default: false
   github-token:
     description: "GitHub token for the semantic release action"
     required: true
@@ -17,11 +21,12 @@ runs:
   using: "composite"
   steps:
     - name: Checkout
+      if: inputs.no-checkout == false
       uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
-    - name: Create Inside
-      shell: bash
-      run: echo "TEST" >> test.txt
+#    - name: Create Inside
+#      shell: bash
+#      run: echo "TEST" >> test.txt
 
     - name: Semantic Release
       id: semantic
