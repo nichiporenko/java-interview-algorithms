@@ -21,6 +21,7 @@ jobs:
       - name: Create
         uses: ./.github/actions/semantic
         with:
+          no-checkout: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           release-assets: |
             gradle/wrapper/gradle-wrapper.properties
