@@ -19,9 +19,9 @@ jobs:
         run: echo "TEST" >> test.txt
 
       - name: Create
-        uses: ./.github/actions/semantic
+        uses: .github/actions/semantic
         with:
-          environment: dev
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           release-assets: |
             gradle/wrapper/gradle-wrapper.properties
             build.gradle

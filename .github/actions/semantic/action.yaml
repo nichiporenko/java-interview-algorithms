@@ -1,9 +1,9 @@
 name: "Test job"
 description: "Reusable action to perform a task"
 inputs:
-  environment:
+  github-token:
+    description: "GitHub token for the semantic release action"
     required: true
-    type: string
   release-assets:
     required: false
     type: string
@@ -33,7 +33,7 @@ runs:
           ]
         tag_format: ${{ inputs.tag-prefix }}${version}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
 
     - name: Semantic Release - Output
       shell: bash
