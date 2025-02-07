@@ -19,7 +19,7 @@ jobs:
         run: echo "TEST" >> test.txt
 
       - name: Create
-        uses: ./.github/workflows/action.yaml
+        uses: ./.github/actions/semantic/action.yaml
         with:
           environment: dev
           release-assets: |
