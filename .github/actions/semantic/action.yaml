@@ -1,0 +1,49 @@
+name: "Test job"
+description: "Reusable action to perform a task"
+inputs:
+  environment:
+    required: true
+    type: string
+  release-assets:
+    required: false
+    type: string
+    default: ''
+  tag-prefix:
+    description: "Tag prefix for the release"
+    required: false
+    type: string
+    default: 'v'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+
+    - name: Semantic Release
+      id: semantic
+      uses: cycjimmy/semantic-release-action@8e58d20d0f6c8773181f43eb74d6a05e3099571d # v3.4.2
+      with:
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+        branches: |
+          [
+            'master',
+            'main'
+          ]
+        tag_format: ${{ inputs.tag-prefix }}${version}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Semantic Release - Output
+      shell: bash
+      run: |
+        echo "### Semantic Release published: ${{ steps.semantic.outputs.new_release_published }}" >> $GITHUB_STEP_SUMMARY
+        echo "### Semantic Release version: ${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_STEP_SUMMARY
+
+    - name: Upload Additional Assets
+      if: inputs.release-assets != '' && steps.semantic.outputs.new_release_published == 'true'
+      uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+      with:
+        tag_name: ${{ inputs.tag-prefix }}${{ steps.semantic.outputs.new_release_version }}
+        files: ${{ inputs.release-assets }}

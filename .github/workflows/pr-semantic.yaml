@@ -9,10 +9,21 @@ on:
 
 jobs:
   semantic-release:
-    uses: ./.github/workflows/reusable-semantic.yaml
-    with:
-      environment: dev
-      release-assets: |
-        gradle/wrapper/gradle-wrapper.properties
-        build.gradle
-      tag-prefix: 'test-v'
+    runs-on: ubuntu-22.04
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create
+        run: echo "TEST" >> test.txt
+
+      - name: Create
+        uses: ./.github/workflows/action.yaml
+        with:
+          environment: dev
+          release-assets: |
+            gradle/wrapper/gradle-wrapper.properties
+            build.gradle
+            text.txt
+          tag-prefix: 'test-v'
