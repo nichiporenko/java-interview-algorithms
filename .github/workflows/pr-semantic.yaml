@@ -25,5 +25,5 @@ jobs:
           release-assets: |
             gradle/wrapper/gradle-wrapper.properties
             build.gradle
-            text.txt
+            test.txt
           tag-prefix: 'test-v'
