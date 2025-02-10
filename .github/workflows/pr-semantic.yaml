@@ -22,6 +22,7 @@ jobs:
         uses: ./.github/actions/semantic
         with:
           no-checkout: true
+          working_directory: '.'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           release-assets: |
             gradle/wrapper/gradle-wrapper.properties
