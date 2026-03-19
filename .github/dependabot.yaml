@@ -1,12 +1,18 @@
 version: 2
+
+registries:
+  ecr-public:
+    type: docker-registry
+    url: https://public.ecr.aws
+    username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
+    password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
+
 updates:
   - package-ecosystem: "docker"
     directories:
       - "/docker"
     schedule:
       interval: "weekly"
-    cooldown:
-      default-days: 5
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
@@ -17,3 +23,5 @@ updates:
     groups:
       docker:
         patterns: ["*"]
+    registries:
+      - ecr-public
