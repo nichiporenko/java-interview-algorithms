@@ -17,20 +17,3 @@ updates:
     groups:
       docker:
         patterns: ["*"]
-
-  - package-ecosystem: "terraform"
-    directories:
-      - "/deployments/terraform"
-      - "/deployments/terraform/modules/monitoring"
-      - "/deployments/terraform/modules/monitoring/dlq"
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 5
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: "build"
-      include: "scope"
-    groups:
-      terraform:
-        patterns: ["*"]
