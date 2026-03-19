@@ -13,8 +13,6 @@ updates:
       - "/docker"
     schedule:
       interval: "weekly"
-    cooldown:
-      default-days: 5
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
