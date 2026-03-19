@@ -18,6 +18,8 @@ permissions:
 
 jobs:
   build:
+    env:
+      TF_WORKSPACE: test
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +33,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+
+    - name: Override
+      run: echo "TF_WORKSPACE=test2" >> $GITHUB_ENV
+
+    - name: Test
+      run: echo "${{ env.TF_WORKSPACE }}"
 
     - name: Run Tests
       run: ./gradlew test
@@ -59,12 +67,14 @@ jobs:
         fi
 
     - name: Push changes
+      if: ${{ github.event_name == 'push' }}
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
         branch: ${{ github.ref }}
 
     - name: Upload JaCoCo coverage report
+      if: ${{ github.event_name == 'push' }}
       uses: actions/upload-artifact@v2
       with:
         name: jacoco-report
