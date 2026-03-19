@@ -1,11 +1,11 @@
 version: 2
 
-registries:
-  ecr-public:
-    type: docker-registry
-    url: https://public.ecr.aws
-    username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
-    password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
+#registries:
+#  ecr-public:
+#    type: docker-registry
+#    url: https://public.ecr.aws
+#    username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
+#    password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
 
 updates:
   - package-ecosystem: "docker"
@@ -23,5 +23,5 @@ updates:
     groups:
       docker:
         patterns: ["*"]
-    registries:
-      - ecr-public
+#    registries:
+#      - ecr-public
